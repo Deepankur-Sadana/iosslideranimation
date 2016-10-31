@@ -23,17 +23,36 @@ class ViewController: UIViewController ,UIScrollViewDelegate{
     func greet(person: String) -> String {
         var scrollView: UIScrollView
         var imageView: UIImageView
-        
+        let screenSize: CGRect = UIScreen.main.bounds
         
         imageView = UIImageView(image: UIImage(named: "image.png"))
         
         scrollView = UIScrollView(frame: view.bounds)
         scrollView.backgroundColor = UIColor.lightGray
-        scrollView.contentSize = imageView.bounds.size
+       // scrollView.contentSize = imageView.bounds.size
         scrollView.autoresizingMask = [ UIViewAutoresizing.flexibleWidth , UIViewAutoresizing.flexibleHeight]
-        
         //scrollView.addSubview(imageView)
         view.addSubview(scrollView)
+        
+        let topMargin : Int=generateAndAddTabs(scrollView: scrollView)
+        
+        imageView = UIImageView(frame: CGRect(x: 0, y: topMargin, width: Int(screenSize.width ), height: 500))
+        imageView.image = UIImage(named: "asdf")
+        
+        scrollView.contentSize=CGSize(width:screenSize.width,height : CGFloat(topMargin+500))
+        scrollView.addSubview(imageView)
+        scrollView.delegate=self
+        return "sup";
+        
+    }
+    
+    var viewList = [UIImageView]()
+    
+    let TABS_TO_ADD : Int=4;
+    let TOTAL_HEIGHT_OF_TAB:Int = 40;
+    let SCROLL_VIEW_TOP_MARGIN:Int=50;
+    
+    func generateAndAddTabs(scrollView : UIScrollView) -> Int {
         
         let screenSize: CGRect = UIScreen.main.bounds
         var topMargin: Int=0;
@@ -64,30 +83,12 @@ class ViewController: UIViewController ,UIScrollViewDelegate{
             scrollView.addSubview(imageView)
             
         }
-        
-        imageView = UIImageView(frame: CGRect(x: 0, y: topMargin, width: Int(screenSize.width ), height: 500))
-        imageView.image = UIImage(named: "asdf")
-        
-        scrollView.contentSize=CGSize(width:screenSize.width,height : CGFloat(topMargin+500))
-        scrollView.addSubview(imageView)
-        scrollView.delegate=self
-        return "sup";
-        
-    }
-    
-    var viewList = [UIImageView]()
-    
-    let TABS_TO_ADD : Int=4;
-    let TOTAL_HEIGHT_OF_TAB:Int = 40;
-    let SCROLL_VIEW_TOP_MARGIN:Int=50;
-    
-    func generateAndAddTabs(scrollView : UIScrollView) -> Int {
-        return 0;
+        return topMargin;
     }
     
     func addToList(im: UIImageView)  {
         viewList.append( im)
-        if viewList.count==3 {
+        if viewList.count == 3 {
           //  im.frame = CGRect(x: 100,y: 000,width: 100,height: 600 ); // set new position exactly
         }
     }
