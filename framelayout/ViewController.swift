@@ -50,7 +50,8 @@ class ViewController: UIViewController ,UIScrollViewDelegate{
     
     let TABS_TO_ADD : Int=4;
     let TOTAL_HEIGHT_OF_TAB:Int = 40;
-    let SCROLL_VIEW_TOP_MARGIN:Int=50;
+    let SCROLL_VIEW_TOP_MARGIN:Int = 50;
+    let VERTICAL_TAB_MARGIN :Int = 10;
     
     func generateAndAddTabs(scrollView : UIScrollView) -> Int {
         
@@ -58,23 +59,10 @@ class ViewController: UIViewController ,UIScrollViewDelegate{
         var topMargin: Int=0;
         
         
-        for i in 0 ..< 6 {
-            let myView = UIView(frame: CGRect(x: 0, y: topMargin, width: Int(screenSize.width - 10), height: 30))
-            myView.backgroundColor=UIColor.green
-            
-            if i%2==0 {
-                myView.backgroundColor=UIColor.white
-            }else{
-                myView.backgroundColor=UIColor.red
-            }
-            
-            if i==99{
-                myView.backgroundColor=UIColor.magenta
-            }
-            
+        for i in 0 ..< 6 {            
             let imageView:UIImageView
             
-            imageView = UIImageView(frame: CGRect(x: 0, y: topMargin, width: Int(screenSize.width - 10), height: 50))
+            imageView = UIImageView(frame: CGRect(x: 0, y: topMargin, width: Int(screenSize.width - 0), height: 50))
             imageView.image = UIImage(named: "glossy")
             
             topMargin=topMargin+50;
