@@ -60,7 +60,9 @@ class ViewController: UIViewController ,UIScrollViewDelegate{
             
             topMargin=topMargin+50;
             scrollView.contentSize=CGSize(width:screenSize.width,height : CGFloat(topMargin))
+            addToList(im: imageView)
             scrollView.addSubview(imageView)
+            
         }
         
         imageView = UIImageView(frame: CGRect(x: 0, y: topMargin, width: Int(screenSize.width ), height: 500))
@@ -71,6 +73,23 @@ class ViewController: UIViewController ,UIScrollViewDelegate{
         scrollView.delegate=self
         return "sup";
         
+    }
+    
+    var viewList = [UIImageView]()
+    
+    let TABS_TO_ADD : Int=4;
+    let TOTAL_HEIGHT_OF_TAB:Int = 40;
+    let SCROLL_VIEW_TOP_MARGIN:Int=50;
+    
+    func generateAndAddTabs(scrollView : UIScrollView) -> Int {
+        return 0;
+    }
+    
+    func addToList(im: UIImageView)  {
+        viewList.append( im)
+        if viewList.count==3 {
+          //  im.frame = CGRect(x: 100,y: 000,width: 100,height: 600 ); // set new position exactly
+        }
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
