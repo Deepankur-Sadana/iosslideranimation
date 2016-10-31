@@ -12,29 +12,7 @@ class ViewController: UIViewController ,UIScrollViewDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        //let view : UIView = UIView(frame: CGRectMake(100,100,100,100))
-        
-        let screenSize: CGRect = UIScreen.main.bounds
-        
-        
-        var myArray: Int=0;
-        
         greet(person: "deepankur")
-        return
-        for i in 0 ..< 100 {
-            let myView = UIView(frame: CGRect(x: 0, y: myArray, width: Int(screenSize.width - 10), height: 30))
-            myView.backgroundColor=UIColor.green
-            
-            if i%2==0 {
-                myView.backgroundColor=UIColor.white
-            }else{
-                myView.backgroundColor=UIColor.red
-            }
-            self.view.addSubview(myView)
-            myArray=myArray+30;
-        }
-        
     }
     
     override func didReceiveMemoryWarning() {
@@ -57,15 +35,12 @@ class ViewController: UIViewController ,UIScrollViewDelegate{
         //scrollView.addSubview(imageView)
         view.addSubview(scrollView)
         
-        
-        
-        
         let screenSize: CGRect = UIScreen.main.bounds
-        var myArray: Int=0;
+        var topMargin: Int=0;
         
         
         for i in 0 ..< 6 {
-            let myView = UIView(frame: CGRect(x: 0, y: myArray, width: Int(screenSize.width - 10), height: 30))
+            let myView = UIView(frame: CGRect(x: 0, y: topMargin, width: Int(screenSize.width - 10), height: 30))
             myView.backgroundColor=UIColor.green
             
             if i%2==0 {
@@ -80,23 +55,20 @@ class ViewController: UIViewController ,UIScrollViewDelegate{
             
             let imageView:UIImageView
             
-            imageView = UIImageView(frame: CGRect(x: 0, y: myArray, width: Int(screenSize.width - 10), height: 50))
+            imageView = UIImageView(frame: CGRect(x: 0, y: topMargin, width: Int(screenSize.width - 10), height: 50))
             imageView.image = UIImage(named: "glossy")
-            //myView.addSubview(imageView)
             
-            myArray=myArray+50;
-            scrollView.contentSize=CGSize(width:screenSize.width,height : CGFloat(myArray))
+            topMargin=topMargin+50;
+            scrollView.contentSize=CGSize(width:screenSize.width,height : CGFloat(topMargin))
             scrollView.addSubview(imageView)
-            
         }
         
-        imageView = UIImageView(frame: CGRect(x: 0, y: myArray, width: Int(screenSize.width ), height: 500))
+        imageView = UIImageView(frame: CGRect(x: 0, y: topMargin, width: Int(screenSize.width ), height: 500))
         imageView.image = UIImage(named: "asdf")
         
-        scrollView.contentSize=CGSize(width:screenSize.width,height : CGFloat(myArray+500))
+        scrollView.contentSize=CGSize(width:screenSize.width,height : CGFloat(topMargin+500))
         scrollView.addSubview(imageView)
         scrollView.delegate=self
-        
         return "sup";
         
     }
