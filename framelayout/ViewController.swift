@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController ,UIScrollViewDelegate{
+class ViewController: UIViewController ,UIScrollViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -83,14 +83,14 @@ class ViewController: UIViewController ,UIScrollViewDelegate{
             let imageView:UIImageView = viewList[i];
             let translationForLoopingTab:Int=getMarginForTab(index: i, scrollY: Int(currentOffset))
             
-            if i>0 {
+            //if i>=0 {
             imageView.frame = CGRect(x: 0,y: translationForLoopingTab,width: Int(screenSize.width),height: TOTAL_HEIGHT_OF_TAB );
-            }
+            //}
         }
     }
     
-    func getOriginalTopMargin(index:Int) -> Int{
-    return (TOTAL_HEIGHT_OF_TAB*(TAB_COUNT - index-1))
+    func getOriginalTopMargin(index:Int) -> Int {
+        return (TOTAL_HEIGHT_OF_TAB*(TAB_COUNT - index-1))
     }
     
     func  getMarginForTab( index :Int, scrollY :Int)->Int {
@@ -98,13 +98,10 @@ class ViewController: UIViewController ,UIScrollViewDelegate{
         
         if index == 0 {
             translation = 0
-            
-        }
-        else {
-            if scrollY < getCutOffTranslationForTab(index:index){
+        }   else {
+            if scrollY < getCutOffTranslationForTab(index:index) {
                 translation = scrollY;
-            }
-            else{
+            }  else {
                 translation = getCutOffTranslationForTab(index:index);
             }
         }
@@ -112,12 +109,11 @@ class ViewController: UIViewController ,UIScrollViewDelegate{
     }
     
     func  getCutOffTranslationForTab( index:Int) ->Int{
-        if index == 0{
-        return 0;
+        if index == 0 {
+            return 0;
+        }
+        return (TOTAL_HEIGHT_OF_TAB ) * index;
     }
-    return (TOTAL_HEIGHT_OF_TAB ) * index;
-    }
-    
     
 }
 
